@@ -1,0 +1,56 @@
+# Variables y Funciones
+lista_productos = []  # Lista de productos
+lista_productos.clear()
+
+def agregarProducto():
+    # Valores
+    nombre   = input("Ingrese el nombre del producto: ")
+    cantidad = int(input("Ingrese la cantidad del producto: "))
+    
+    # Se guarda el producto en un diccionario
+    producto = {
+        "nombre": nombre,
+        "cantidad": cantidad
+    }
+
+    # Se agrega el producto a la lista de productos
+    lista_productos.append(producto)
+
+    print(f"El producto '{nombre}' ha sido agregado con éxito a la lista de productos.")
+
+
+def verProductos():
+    if not lista_productos:
+        print("No hay productos registrados.\n")
+    else:
+        print("Productos registrados:")
+        for producto in lista_productos:
+            print(f"Producto: {producto['nombre']}, Cantidad: {producto['cantidad']}")
+
+def salir():
+    print(f"-------------------------\n    Hasta pronto 👋\n-------------------------\n")
+
+
+while True:
+    print("-------------------------\n    Menú principal \n-------------------------")
+    print("1. Agregar producto")
+    print("2. Ver productos")
+    print("3. Salir")
+
+    # Se solicita al usuario que ingrese una opción
+    try:
+        op = int(input("\nPor favor ingrese el número de opción: "))
+    except ValueError:
+        print("❗️ Por favor ingrese un número válido.")
+        continue
+
+    # Salida
+    if op == 1:
+        agregarProducto()
+    elif op == 2:
+        verProductos()
+    elif op == 3:
+        salir()
+        break
+    else:
+        print("❗️ La opción es incorrecta.")
